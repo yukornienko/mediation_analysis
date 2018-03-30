@@ -3,6 +3,7 @@
 **What is already known?**
 
 • Peripubertal exposure to TCDD is associated with poorer semen quality (RCS, Minguez-Alarcon et al., 2017)
+
 • 52 differentially methylated regions (DMRs) were identified that distinguished lowest and highest peripubertal serum TCDD concentrations (RCS, Pilsner et al., 2018)
 
 **What is needed to be known?**
