@@ -23,6 +23,5 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS
 
 
 **Distribution of TCDD concentration among selescted 34 individuals:**
-  TCDD_hist.jpeg
-  TCDD_boxplot.jpeg
+
   
