@@ -72,7 +72,7 @@ Moreover, the same statistics were calculated for the predictor nstq2378d and do
 
 Plots showing the distribution if independent variable (nstq2378d, predictor) and all regression parameters were also downloaded on the google-drive. 
 
-Significant correlations (p < 0.05 and |R2| > 0.80) between CpG methylation level and TCDD concentration were then found and a new data frame containing only information regarding these TCDD-dependent CpGs was created and named 34_CpGs_10x_with_regression_and_CpGs_info_sing.csv.
+Significant correlations (p < 0.05 and |R2| > 0.80) between CpG methylation level and TCDD concentration were then found and a new data frame containing only information regarding these TCDD-dependent CpGs was created and named 34_CpGs_10x_with_regression_and_CpGs_info_sing.csv. 26 395 CpGs were found to be strongly associated with the TCDD concentration.
 
 
 
