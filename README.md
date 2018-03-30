@@ -1,4 +1,11 @@
 # mediation_analysis
+**Student:**
+
+Julia Kornienko
+
+**Supervisors:**
+
+Oleg Sergeev, Yulia Medvedeva
 
 **What is already known?**
 
@@ -37,6 +44,15 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS
 ###############
 *Samples selection:*
 
+51 out of 516 samples were chosen by the following criterias:
+
+•	Prepubertal TCDD exposure at 8-9 years old
+•	Semen quality at 18-19 years old
+•	Frozen semen samples at 18-19 years old
+•	Buffy coat samples at 18-19 years old closest to date of semen sampling
+
+
+To start with, 10 IDs with either the highest or the lowest TCDD concentration were selected. Then were selected one ID with the highest semen quality and one with the lowest. Later, 39 more IDs were chosen by random selection 13 IDs belonging to each tercile in terms of TCDD concentration. Therefore the data set of 51 samples was created. Finally, 34 samples with satisfactory sequencing quality were selected for this project .
 
 
 
