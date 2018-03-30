@@ -31,18 +31,16 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS
 5. To collect a) CpGs with significant mediation by pubertal tempo and/or smoking and b) non-mediated CpGs
 6. Biological sense analysis (functional enrichment analyses)
 
-**Samples selection:**
-
-
-
-
-**Distribution of TCDD concentration among selescted 34 individuals:**
-
 
 **LOG**
 
 ###############
-Files description:
+*Samples selection:*
+
+
+
+
+*Files description:*
 
 all_cpgs_10x.txt - all CpGs that are present in at least 1 sample out of 40 - 7 132 072 CpGs CpGs (not filtered, contains empty rows).
 all_cpgs_10x_filtered.csv - all CpGs at least 10X coverage that are present in at least 1 sample out of 40 - 2 647 787 CpGs.
