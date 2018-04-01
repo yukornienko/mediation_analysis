@@ -39,7 +39,7 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS
 6. Biological sense analysis (functional enrichment analyses)
 
 
-**LOG**
+
 
 ###############
 *Samples selection:*
