@@ -15,18 +15,25 @@ Oleg Sergeev, Yulia Medvedeva
 
 **What is needed to be known?**
 
-• How do other factors influence the methylation level of the human sperm? • Which factors can mediate the effect of the peripubertal exposure to TCDD?
+• How do other factors influence the methylation level of the human sperm?
+
+• Which factors can mediate the effect of the peripubertal exposure to TCDD?
  
 **Aim of the project:**
 Mediation analysis using regression models and longitudinal design
+
 Predictor: peripubertal TCDD concentration
+
 Mediators: smoking and tempo of puberty
+
 Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS
 
 **What are the data to analyse:**
 
 • 34 samples with different concentration of TCDD in the boy’s serum at enrollment in the study (8-9 years old) 
+
 • Methylation level of 2 611 773 CpGs with coverage >=10 presented in at least one of 34 samples
+
 • Data of lifestyle and pubertal tempo of each of 34 selected participants
 
 **What is going to be done with these data:**
@@ -42,13 +49,18 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS
 
 
 ###############
+
+
 *Samples selection:*
 
 51 out of 516 samples were chosen by the following criterias:
 
 •	Prepubertal TCDD exposure at 8-9 years old
+
 •	Semen quality at 18-19 years old
+
 •	Frozen semen samples at 18-19 years old
+
 •	Buffy coat samples at 18-19 years old closest to date of semen sampling
 
 
