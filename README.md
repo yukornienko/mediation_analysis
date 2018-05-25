@@ -20,36 +20,45 @@ Oleg Sergeev, Yulia Medvedeva
 • Which factors can mediate the effect of the peripubertal exposure to TCDD?
  
 **Aim of the project:**
+
 Mediation analysis using regression models and longitudinal design
 
-Predictor: peripubertal TCDD concentration
+Predictors: peripubertal TCDD concentration and smoking
 
-Mediators: smoking and tempo of puberty
+Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS)
 
-Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS
+**What was the data to analyse:**
 
-**What are the data to analyse:**
-
-• 34 samples with different concentration of TCDD in the boy’s serum at enrollment in the study (8-9 years old) 
+• 34 samples with different concentrations of TCDD in the boy’s serum at enrollment in the study (8-9 years old) (you can see the histogram of TCDD concentration on the figure 1).
 
 • Methylation level of 2 611 773 CpGs with coverage >=10 presented in at least one of 34 samples
 
-• Data of lifestyle and pubertal tempo of each of 34 selected participants
+• Data regarding lifestyle habits of each of 34 chosen participants (you can see the list of questions based on which we evaluated smoking within 6 months before sperm collection as a range variable with 6 categories on figure 2 and bar chart with the count of partisipants belonging to each category on figure 3)
 
-**What is going to be done with these data:**
+**What was going to be done with these data:**
 
 1. Building the linear regression model of TCDD concentration and methylation level
-2. Selection only those CpGs, which methylation level is significantly dependent on the TCDD concentration.
-3. Regress the smoking and pubertal tempo (mediators) on the TCDD (predictor) to confirm that the TCDD is a significant predictor of the mediator. If the mediator is not associated with the TCDD level, then it couldn’t possibly mediate anything
-4. Regress the CpGs methylation on both the mediators (smoking and pubertal tempo) and TCDD level to confirm that the mediators are significant predictor of the CpG methylation, and the previously significant predictor in Step #1 is now greatly reduced, if not - nonsignificant
-5. To collect a) CpGs with significant mediation by pubertal tempo and/or smoking and b) non-mediated CpGs
-6. Biological sense analysis (functional enrichment analyses)
+2. Regress the smoking on the TCDD (predictor) to recognize whether the TCDD is a significant predictor of the mediator. If the mediator is not associated with the TCDD level, then it couldn’t possibly mediate anything and then these two variables can be used only as independent predictors in multi-factorial regression model.
+3. Regress the CpGs methylation on smoking to confirm that it is a significant predictor of the CpG methylation.
+4. Building multi-factorial regression model of TCDD concentration in the boy’s serum at enrollment in the study and smoking within 6 months before sperm collection as predictors or as a predictor and mediator (based on the result of n.2) and methilation level of sperm as a dependent variable.
+5. Collect CpGs whose methylation level is significantly dependent on TCDD concentration and/or smoking (three models in total).
+6. Mapping of all significant CpGs found in each model to the human genome
+7. Biological sense analysis of significant CpGs found (functional enrichment analyses)
 
 
+**Breif summary of results:**
+
+1. Linear regression models for the influences of TCDD concentration in prepubertal age and smoking within 6 months before collection of sperm on the young adults semen methylation level were built (both for separate predictors and for their combination).
+2. Predictors were considered to be independent on each other.
+3. Only CpGs whose methylation levels were significantly dependent on the TCDD concentration and/or smoking, were chosen for further analysis. 
+4. All significant CpGs were mapped to either gene, promoter or enhancer regions.
+5. Enrichment analysis for all genes associated with CpGs, whose methylation levels were significantly dependent on one or both of predictors, was performed.
+6. Some interesting findings are needed to be analyzed in more details.
 
 
 ###############
 
+**Detailed project outline:**
 
 *Samples selection:*
 
@@ -63,46 +72,72 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS
 
 •	Buffy coat samples at 18-19 years old closest to date of semen sampling
 
-
 To start with, 10 IDs with either the highest or the lowest TCDD concentration were selected. Then were selected one ID with the highest semen quality and one with the lowest. Later, 39 more IDs were chosen by random selection 13 IDs belonging to each tercile in terms of TCDD concentration. Therefore the data set of 51 samples was created. Finally, 34 samples with satisfactory sequencing quality were selected for this project .
 
 
+*Data preprocessing:*
 
-*Files description:*
-
-all_cpgs_10x.txt - all CpGs that are present in at least 1 sample out of 40 - 7 132 072 CpGs CpGs (not filtered, contains empty rows).
-all_cpgs_10x_filtered.csv - all CpGs at least 10X coverage that are present in at least 1 sample out of 40 - 2 647 787 CpGs.
-
-34_CpGs_10x.csv - all CpGs with at least 10X coverage that are present in at least 1 sample out of 34 - 2 611 773 CpGs.
-34_CpGs_10x_present_everywhere.csv - all CpGs with at least 10X coverage that are present in all samples out of 34 - 29 161 CpGs.
-
-34_all_CpGs_10x_with_regression_and_CpGs_info.csv - updated 34_CpGs_10x.csv file with regression parameters and descriptive statistics calculated for each CpG.
-
-34_CpGs_10x_with_regression_and_CpGs_info_sign.csv - a subset of the 34_all_CpGs_10x_with_regression_and_CpGs_info.csv with p_value <0.05 and |R2| > 0.80 for CpGs presented in at least 3 samples. Moreover to this file was added a column with nstq2378d variable and its descriptive statistics.
-
-TCDD_info.csv - descriptive statistics calculated for the predictor variable nstq2378d.
-
-################
-
-From the file all_cpgs_10x.txt containing information regarding all CpGs presented in at least 1 of all 40 samples (with CpGs coverage > 10x), I extracted methylation values for the selected 34 samples (the list of selected samples was given in a file RRBS_TCDD_34 selected subjects.xls), therefore the file named 34_CpGs_10x.csv (tab-separated csv file without empty rows) was created. Moreover, for the selected 34 samples, I extracted methylation values for only those CpGs which are presented in all samples into the another file named 34_CpGs_10x_present_everywhere.csv.
+From the file containing information regarding all CpGs presented in at least 1 of all 40 samples (with CpGs coverage > 10x), I extracted methylation values for the selected 34 samples (the list of selected samples was given in the another file)  
 The script is saved under the name Creating_two_files_with_CpGs.py.
 
-##########
+Then for further the dataset with 2 611 773 was restricted according to the following criterias:
+- Methilation range of CpG is more than 20 (histogram of methylation range distribution - figure 4)
+- This CpG is presented in at least 10 of 34 samples (histogram of sample number distribution - figure 5)
+So the subset of initial dataframe was created (it contains 307 538 CpGs which satisfy described criterias)
+The is saved under the name histograms.py.
 
-Next the linear regression models (y = Ax +B, where y was the vector of methylation level for the one of 2 611 773 CpGs from file 34_CpGs_10x.csv and x was the vector of nstq2378d values) were built. Moreover, this file was updated with the mean, median, st. deviation and interquartile range for each of CpGs.
+*Regression model of TCDD concentration (predictor) and methylation level (dependent variable):*
 
-The output file with the regression coefficients (TCDD_A - intercept, TCDD_B - slope), and regression parameters (TCDD_R2 - R2, TCDD_P - p-value, st_err - standard error) is named 34_CpGs_10x_with_regression_and_CpGs_info.csv and downloaded on the google drive. For the CpGs which were analyzed in less than 3 samples, in all the new positions (TCDD_A, TCDD_B, TCDD_R2, TCDD_P, st_err) "-" were written. Comparative statistics for each of  2 611 773 CpGs were saved in the columns named Mean, St_d, Min, 1st_q, Median, 3rd_q, Max.
-
-This was performed with pre-processed data from files 34_CpGs_10x.csv and RRBS_TCDD_34_selected_subjects.csv. The code for the data pre-procession, further regression building and descriptive statistics calculating was written on the Python3. Linear regression was built with the use of scipy.stats library (this script is downloaded on google-drive under the name Dioxines_CpGs_linear_regression.py and can be run).
-
-Moreover, the same statistics were calculated for the predictor nstq2378d and downoaded under the name TCDD_info.csv.
-
-Plots showing the distribution of independent variable (nstq2378d, predictor) and all regression parameters were downloaded to the Figures folder. 
-Plots showing the distribution of all regression parameters were also downloaded to the Figures folder.
-
-Significant correlations (p < 0.05 and |R2| > 0.80) between CpG methylation level and TCDD concentration were then found and a new data frame containing only information regarding these TCDD-dependent CpGs was created and named 34_CpGs_10x_with_regression_and_CpGs_info_sing.csv. 26 395 CpGs were found to be strongly associated with the TCDD concentration.
+Next the linear regression models were built. This was performed with the Dioxines_CpGs_linear_regression.py script, which takes file with CpG methilation level and TCDD concentration as inputs and gives table with all regression coefficients and parameters for each CpG position, as well as descriptive characteristic of this CpG methylation. Here the scipy.stats python package was used for the linear regression model with one continious predictor. 
 
 
+*Regression model of TCDD concentration (predictor) and smoking (possible mediator):*
+
+To answer the question whether the smoking habit can act as a mediator of TCDD exposure effects on human sperm epigenome, we performed regression (TCDD concentration - predictor and smoking - dependent variable) to recognize if smoking habit is dependent on the TCDD exposure. It was done in R with simple functions (the code is somewhere in Stuff.R file).
+It appeared that:
+When smoking is a binary variable (did the person smoke within 6 months before semen collection), there is significant (pvalue = 0.03) but slight (R2 = 0.14) dependence of smoking habbit on TCDD concentration
+When smoking is a range variable (did and how much did the person smoke within 6 months before semen collection) – no significant dependence was observed. To confirm that, the histogram of TCDD concentration, filled with the category of smoking variable, was plotted (figure 6).
+For further analysis the range variable was chosen as more informative one, so TCDD concentration at the moment of enrollment and smoking within 6 months before semen collection were studied as two independent predictors of methylation level in sperm.
 
 
-  
+*Regression model of smoking (predictor) and methylation level and multi-factor regression model with two predictors (smoking and TCDD concentration):*
+
+To perform the regression analysis of smoking influence on CpG methylation level, the statsmodels.formula.api python package was used (as smoking is a categorial variable, the scipy.stats python package can not be used). 
+For the multi-factorial regression analysis with two predictors, the same package was exploited.
+It was done with the All_regressions_statsmodels.py script, which takes the file with CpG methilation level, TCDD concentration and smoking as inputs and gives table with all regression coefficients and parameters for each CpG position, as well as descriptive characteristic of this CpG methylation destribution as an output. 
+Moreover, we also built three additional regression models with another representation of the same predictors:
+- TCDD as a categorial variable (belonging to one of three TCDD concentration tertiles)
+- Smoking as a categorial variable with reduced number of categories (three instead of six)
+- Multi-factor regression model with these two predictors (they were also concidered to be independent on each other).
+However, for further analysis we chose the first predictors representation (TCDD as continuous variable and smoking with 6 categories) as they are more informative ones. 
+
+
+*Selection of only CpGs whose methylation level is significantly dependent on one of or both of predictors (three models):*
+
+For each model, the p-value fdr correction was performed (Stuff.R). Then, based on the results of regressions, selection of CpGs, whose methylation level was significantly dependent on the predictors, was performed according to the following criterias:
+- P value of the overall model with fdr correction is less than 0.05
+- Absolute value of R2 is more than 0.7
+ 
+ The table with the total amount of significat CpGs in each model is on figure 7.
+ 
+*Mapping of all significant CpGs found in each model to the human genome:*
+
+For mapping of all significant CpGs found in each model to the human genome regions, the following data were used:
+ - Promoter regions: 2000 upstream:1000 downstream from TSS (Ensembl annotation)
+ - Intraenhancer regions (Fantom5 annotation)
+ - Intragenic regions (hg19 annotation)
+
+For mapping, positions of all significant CpGs in each model were saved as bed-files. The mapping itself was performed with the use of BEDOPS v2.4.35 tool (closest-features command, example: closest-features --closest --delim "\t" --dist only_smoke6.bed  enhancers_hg19.bed  > smoke_enhansers.bed).
+Then, all found features were filtered according to the distance to the closest feature (not more than 500bp upstream/downstream far from the promoter regions, and only intra-enhancer and intra-genic regions) and merged in the one file containing information about all genes, associated with significant CpGs found in each model.
+These sets of genes were than used for the enrichment analysis for each model.
+The script of data processing - Mapping_and_enrichment.R.
+Amount of all promoters, enhancers and intragenic found to be associated with significant CpGs in each model is presented on the figure 8. 
+
+*Enrichment analysis for all genes, associated with significant CpGs found in each model:*
+
+Finally, enrichment analysis for all genes, associated with significant CpGs found in each model was performed. It was done with the use of R packages (see Mapping_and_enrichment.R) and three databases: KEGG, GO, Reactome. 
+For each model, the p-value<0.05 cutoff of enrichment result was chosen. The list of most enriched pathways in each model is shown on the figure 9, as well as the example of cnetplot for the top 5 enriched GO categories for TCDD+Smoking model is shown on the figure 10. Though, the more detailed analysis of obtained results in each model is needed to be done (and will be done soon).
+
+
+
+
