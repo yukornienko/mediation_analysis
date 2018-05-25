@@ -51,7 +51,7 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS)
 6. Mapping of all significant CpGs found in each model to the human genome
 7. Biological sense analysis of significant CpGs found (functional enrichment analyses)
 
-**Breif summary of results:**
+**Breif summary of the results:**
 
 1. Linear regression models for the influences of TCDD concentration in prepubertal age and smoking within 6 months before collection of sperm on the young adults semen methylation level were built (both for separate predictors and for their combination).
 2. Predictors were considered to be independent on each other.
@@ -61,7 +61,7 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS)
 6. Some interesting findings are needed to be analyzed in more details.
 
 
-## Detailed description of results:
+## Detailed description of the results:
 
 *Samples selection:*
 
