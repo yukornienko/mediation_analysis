@@ -33,7 +33,7 @@ Predictors: peripubertal TCDD concentration and smoking
 
 Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS)
 
-**What was the data to analyse:**
+**What were the data to analyse:**
 
 • 34 samples with different concentrations of TCDD in the boy’s serum at enrollment in the study (8-9 years old) (you can see the histogram of TCDD concentration destribution on the figure 1).
 
