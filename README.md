@@ -1,4 +1,5 @@
-# mediation_analysis
+## Mediation of effects of persistent chemicals on the human sperm epigenome
+
 **Student:**
 
 Julia Kornienko
@@ -6,6 +7,11 @@ Julia Kornienko
 **Supervisors:**
 
 Oleg Sergeev, Yulia Medvedeva
+
+# Project description 
+
+The Russian Children’s Study is a prospective cohort of 516 boys who were enrolled at 8–9 years of age and provided semen samples at 18–19 years of age. RRBS of sperm was conducted to identify the methylation level of CpG denucleotides. 
+At the moment of enrollment into the study, the TCDD dioxine (which is one of the most harmful endocrine disrupting chemicals) concentration in the blood of each boy was measured for further longitudinal study of its influence on the reproductive health. Moreover, each boy visited the clinic biennially - for blood sampling; annually - for urine sampling, follow up of growth and puberty  and interviewing => 20 000+ sample aliquots and 1000+ analyzing parameters were collected in total for further analysis. 
 
 **What is already known?**
 
@@ -45,7 +51,6 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS)
 6. Mapping of all significant CpGs found in each model to the human genome
 7. Biological sense analysis of significant CpGs found (functional enrichment analyses)
 
-
 **Breif summary of results:**
 
 1. Linear regression models for the influences of TCDD concentration in prepubertal age and smoking within 6 months before collection of sperm on the young adults semen methylation level were built (both for separate predictors and for their combination).
@@ -56,9 +61,7 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS)
 6. Some interesting findings are needed to be analyzed in more details.
 
 
-###############
-
-**Detailed project outline:**
+# Detailed description of results:
 
 *Samples selection:*
 
