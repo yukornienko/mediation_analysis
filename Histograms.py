@@ -9,7 +9,7 @@ import numpy as np
 import statsmodels.api as sm
 from tqdm import tqdm
 import os
-os.chdir("/Users/yukornienko/Downloads/BI_spring_2018/Project")
+os.chdir("./BI_spring_2018/Project")
 df =  pd.read_csv('./34_CpGs_10x.csv', sep="\t")
 print("Hello")
 
