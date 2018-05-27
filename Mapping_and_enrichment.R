@@ -165,7 +165,6 @@ barplot(react,drop = TRUE, showCategory = 9)
 #GO
 ego <- enrichGO(all_genes_smoke_1$KEGG_ID, OrgDb = org.Hs.eg.db, ont  = "CC", pAdjustMethod = "BH", pvalueCutoff  = 0.05, readable = TRUE)
 head(ego)
-length(ego@geneSets) # = 712!
 barplot(ego,drop = TRUE, showCategory = 20)
 cnetplot(ego, categorySize=15, category.color = "blue", fixed = T, category.label = 1, vertex.label.cex=0.5, vertex.label.color='black', colorEdge = FALSE, circular = FALSE, node_label = TRUE)
 
@@ -196,7 +195,6 @@ barplot(react,drop = TRUE, showCategory = 9)
 #GO
 ego <- enrichGO(all_genes_TCDD_1$KEGG_ID, OrgDb = org.Hs.eg.db, ont  = "CC", pAdjustMethod = "BH", pvalueCutoff  = 0.05, readable = TRUE)
 head(ego)
-length(ego@geneSets) # = 81!
 barplot(ego,drop = TRUE, showCategory = 10)
 cnetplot(ego, categorySize=15, category.color = "blue", fixed = T, category.label = 1, vertex.label.cex=1, vertex.label.color='black', colorEdge = FALSE, circular = FALSE, node_label = TRUE)
 
