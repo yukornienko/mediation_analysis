@@ -51,7 +51,6 @@ plt.hist(Ns, color = "darkblue", bins = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
 plt.xlabel('Number of samples')
 plt.ylabel('Count')
 plt.title('Histogram samples number')
-#plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
 plt.axis([0, 35, 0, 310000])
 plt.show()
 
