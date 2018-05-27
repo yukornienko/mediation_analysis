@@ -1,28 +1,5 @@
 ###Smoke6 and TCDD conc####
 
-###Preoarations######
-
-source("https://bioconductor.org/biocLite.R")
-biocLite("ChIPpeakAnno")
-
-
-bed <-read.table("34_10x_CpG~TCDD_and_Smoke6_sign.bed", header = FALSE, sep = "\t")
-gr1 <- toGRanges(bed, format="BED", header=FALSE) 
-
-
-promoters <- read.table("./TCDD_Smoke6_bedopsed.tsv", header = FALSE, sep = "\t")
-colnames(promoters) <- c("chr", "pos_CpG", "closest_feature", "gene_id", "gene_name", "strand", "dist")
-promoters$strand <- as.character(promoters$strand)
-promoters$chr <- as.character(promoters$chr)
-promoters_good <- promoters[promoters$dist > -500 & promoters$strand == "+" ,]
-promoters_good <- promoters_good[promoters_good$dist <1500,]
-
-promoters_good_2 <- promoters[promoters$dist > -1500 & promoters$strand == "-" ,]
-promoters_good_2 <- promoters_good_2[promoters_good_2$dist <500,]
-
-promoters_all <- rbind(promoters_good, promoters_good_2 )
-
-write.table(promoters_all, "./promoters_TCDD_and_Smkoke6.tsv", sep = "\t", row.names = FALSE)
 
 enhansers <- read.table("./TCDD_Smoke6_bedopsed_enhansers.bed", header = FALSE, sep = "\t")
 colnames(enhansers) <- c("chr", "pos_CpG", "closest_enh_start", "closest_enh_start", "targets", "dist")
@@ -33,29 +10,6 @@ colnames(promoters_ensembl) <- c("chr", "pos_CpG", "start", "stop",  "gene_name"
 promoters_ensembl_good <- promoters_ensembl[abs(promoters_ensembl$dist) < 500,]
 
 promoters_ensembl_good$gene_name
-merged_promoters <- merge(promoters_all, promoters_ensembl_good, by.x = "gene_name", by.y = "gene_name") 
-
-
-
-promoters_cloud <- read.table("./TCDD_Smoke6_bedopsed_cloud.tsv", header = FALSE, sep = "\t")
-colnames(promoters_cloud) <- c("chr", "pos_CpG", "closest_feature", "gene_name", "strand", "dist")
-promoters_cloud$strand <- as.character(promoters_cloud$strand)
-
-promoters_good <- promoters_cloud[promoters_cloud$dist > -500 & promoters_cloud$strand == "+" ,]
-promoters_good <- promoters_good[promoters_good$dist <1500,]
-
-promoters_good_2 <- promoters_cloud[promoters_cloud$dist > -1500 & promoters_cloud$strand == "-" ,]
-promoters_good_2 <- promoters_good_2[promoters_good_2$dist <500,]
-
-write.table(promoters_all_cloud, "./promoters_TCDD_and_Smkoke6_cloud.tsv", sep = "\t", row.names = FALSE)
-write.table(promoters_ensembl_good, "./promoters_TCDD_and_Smkoke6_ensembl.tsv", sep = "\t", row.names = FALSE)
-promoters_all_cloud <- rbind(promoters_good, promoters_good_2 )
-
-merged_promoters <- merge(promoters_all_cloud, promoters_ensembl_good, by.x = "gene_name", by.y = "gene_name")
-merged_promoters <- merge(merged_promoters, promoters_ensembl_good, by.x = "gene_name", by.y = "gene_name")
-
-
-
 
 distances <- read.table("./dist_to_genes.bed", sep = "\t", header = FALSE)
 colnames(distances) <- c("chr", "pos_CpG", "pos_CpG1", "chr1", "start", "stop" , "gene_name", "strand", "dist")
@@ -67,7 +21,7 @@ intra_gene_CpGs$dist = NULL
 
 write.table(intra_gene_CpGs, "./intra_genetic_CpGs_Sm6TCDD.tsv", sep = "\t", row.names = FALSE)
 
-enhancers <- distances <- read.table("./dist_to_enhansers.bed", sep = "\t", header = FALSE)
+enhancers <- read.table("./dist_to_enhansers.bed", sep = "\t", header = FALSE)
 colnames(enhancers) <- c("chr", "pos_CpG", "pos_CpG1", "chr1", "start", "stop" , "gene_name", "dist")
 intra_enh_CpGs <- enhancers[which(enhancers$dist == 0),]
 
@@ -76,12 +30,6 @@ intra_enh_CpGs$pos_CpG1 = NULL
 write.table(intra_enh_CpGs, "./intra_enh_CpGs_Sm6TCDD.tsv", sep = "\t", row.names = FALSE)
 
 
-fantom_promoters <- read.table("./fantom_promoters.bed", sep = "\t", header = FALSE)
-colnames(fantom_promoters) <- c("chr", "pos_CpG",  "start", "stop" , "entez_gene_id", "strand", "dist")
-fantom_promoters$entez_gene_id <- as.character(fantom_promoters$entez_gene_id )
-fantom_promoters_good <- fantom_promoters[abs(fantom_promoters$dist) <500,]
-
-fantom_promoters_wo_na <- fantom_promoters_good[is.na(fantom_promoters_good$entez_gene_id) == F, ]
 
 promoters_ensembl_good$type <- "promoter"
 intra_gene_CpGs$type <- "intragenic"
@@ -92,7 +40,6 @@ all_genes_TCDD_Smoke6 <- rbind(all_genes_TCDD_Smoke6, intra_gene_CpGs[,c(1:5,7)]
 
 write.table(all_genes_TCDD_Smoke6, "./all_genes_TCDD_Smoke6.tsv", sep = "\t", row.names = F)
 
-all_genes_TCDD_Smoke6 <- read.table("./all_genes_TCDD_Smoke6.tsv", sep = "\t", header = TRUE)
 
 #smoke_only#
 
@@ -150,23 +97,13 @@ all_genes_TCDD <- rbind(promoters_TCDD[,c(1:5,7)], intragenic_TCDD[,c(1:5,8)])
 write.table(all_genes_TCDD, "./all_genes_TCDD.tsv", sep = "\t", row.names = F)
 
 #######ENRICHMENT!##########
-setwd("/Users/yukornienko/Downloads/BI_spring_2018/Project/annotation")
+setwd("./project")
 library(pathview)
 library(reactome.db)
-library(ballgown)
-library(genefilter)
-library(dplyr)
-library(devtools)
 library(ggplot2)
 library(gplots)
-library(genefilter)
-library(GenomicRanges)
-library(plyr)
 library(KEGGgraph)
 library(org.Hs.eg.db)
-library(clusterProfiler)
-library(VennDiagram)
-library(GSEABase)
 library(ReactomePA)
 library(enrichplot)
 library(InterMineR)
@@ -188,7 +125,7 @@ cnetplot(kk, categorySize="pvalue",  vertex.label.cex=0.8, vertex.label.color='b
 
 
 #REACTOME
-react <-enrichPathway(all_genes_TCDD_Smoke6_1$KEGG_ID, pvalueCutoff=0.99, readable=T)
+react <-enrichPathway(all_genes_TCDD_Smoke6_1$KEGG_ID, pvalueCutoff=0.05, readable=T)
 head(as.data.frame(react)) #1 - R-HSA-8948216 COL7A1/COL11A1/COL13A1/COL4A1/COL4A2/COL23A1/COL26A1/COL5A1 - Collagen chain trimerization
 #8/295, p.adjust 0.02242243
 cnetplot(react, categorySize="pvalue",  vertex.label.cex=0.7, vertex.label.color='black')
@@ -200,7 +137,7 @@ head(ego)
 str(ego)
 cnetplot(ego, categorySize=15, category.color = "blue", fixed = T, category.label = 1, vertex.label.cex=0.5, vertex.label.color='black', colorEdge = FALSE, circular = FALSE, node_label = TRUE)
 barplot(ego,drop = TRUE, showCategory = 10)
-length(ego@geneSets) # = 701!
+
 
 #Smoke6 only#
 
