@@ -1,7 +1,7 @@
 library(ggplot2)
 library(gdata)
 
-setwd("/Users/yukornienko/Downloads/BI_spring_2018/Project")
+setwd("./Project")
 CpGs <- read.csv("34_CpGs_10x_with_regression_and_CpGs_info_present_in3.csv", sep = "\t")
 CpGs$p_fdr <- p.adjust(CpGs$TCDD_P, method = "fdr", n = length(CpGs$TCDD_P))
 write.csv(CpGs, "34_CpGs_10x_with_regression_and_CpGs_info_present_in3_fdr.csv", row.names = FALSE, col.names = FALSE)
@@ -33,7 +33,7 @@ plot(fit_smoke_tcdd)
 
 ####
 
-setwd("/Users/yukornienko/Downloads/BI_spring_2018/Project")
+setwd("./Project")
 CpGs_smoking <- read.csv("34_10x_CpG~Smoking.csv", sep = "\t")
 
 CpGs_smoking$p_fdr_3 <- p.adjust(CpGs_smoking$TCDD_P_3, method = "fdr", n = length(CpGs_smoking$TCDD_P_3))
@@ -45,7 +45,7 @@ CpGs_sign <- CpGs[CpGs$p_fdr < 0.05,]
 ####
 #smoke6 and TCDD conc
 
-setwd("/Users/yukornienko/Downloads/BI_spring_2018/Project")
+setwd("./Project")
 CpGs_smoking6_TCDD <- read.csv("34_10x_CpG~TCDD_and_Smoke6_cat.csv", sep = "\t")
 kek <- CpGs_smoking6_TCDD
 CpGs_smoking6_TCDD <- kek
@@ -153,7 +153,7 @@ write.csv(terc_smoke_sign, "34_10x_CpG~TCDD_terc_and_smoke3_cat_sign.csv", row.n
 
 
 ###
-setwd("/Users/yukornienko/Downloads/BI_spring_2018/Project")
+setwd("./Project")
 CpG_terciles <- read.csv("34_10x_Terc~CpG.csv", sep = "\t")
 CpG_terciles$p_fdr <- p.adjust(CpG_terciles$TCDD_P, method = "fdr", n = length(CpG_terciles$TCDD_P))
 write.csv(CpG_terciles, "34_10x_Terc~CpG.csv", row.names = FALSE, col.names = FALSE)
@@ -208,7 +208,7 @@ hist(CpG_3rd, breaks = 100, ylim = c(0, 7000000), main="Third tercile", xlab="B-
 
 ####
 
-setwd("/Users/yukornienko/Downloads/BI_spring_2018/Project")
+setwd("./Project")
 
 TCDD_CpG_genes <- read.csv("TCDD~CpG_sign_genes_uniq.csv", header = FALSE, sep = "\t")
 
