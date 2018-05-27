@@ -49,7 +49,7 @@ Outcomes: sperm methylation profiles (all CpGs with coverage >=10 using RRBS)
 4. Building multi-factorial regression model of TCDD concentration in the boy’s serum at enrollment in the study and smoking within 6 months before sperm collection either as two independent predictors or as a predictor and mediator (based on the result of n.2) and methylation level of sperm as a dependent variable.
 5. Collect CpGs whose methylation level is significantly dependent on TCDD concentration and/or smoking (three models in total).
 6. Mapping of all significant CpGs found in each model to the human genome
-7. Biological sense analysis of significant CpGs found (functional enrichment analyses)
+7. Biological sense analysis of significant CpGs found (functional enrichment analysis)
 
 **Brief summary of the results:**
 
