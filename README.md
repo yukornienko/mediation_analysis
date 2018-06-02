@@ -88,7 +88,9 @@ To answer the question whether the smoking habit can act as a mediator of TCDD e
 To perform the regression analysis of smoking influence on CpG methylation level, the statsmodels.formula.api python package was used (as smoking is a categorical variable, the scipy.stats python package can not be used). For the multi-factorial regression analysis with two predictors, the same package was exploited. It was done with the All_regressions_statsmodels.py script, which takes the file with CpG methylation level, TCDD concentration and smoking as inputs and gives table with all regression coefficients and parameters for each CpG position, as well as descriptive statistics of this CpG methylation level distribution as an output. Moreover, we also built three additional regression models with another representation of the same predictors:
 - TCDD as a categorical variable (belonging to one of three TCDD concentration tertiles)
 - Smoking as a categorical variable with reduced number of categories (three instead of six)
-- Multi-factor regression model with these two predictors (they were also considered to be independent on each other). However, for further analysis we chose the first set of predictors representation (TCDD as continuous variable and smoking with 6 categories) as they are more informative ones.
+- Multi-factor regression model with these two predictors (they were also considered to be independent on each other). 
+
+However, for further analysis we chose the first set of predictors representation (TCDD as continuous variable and smoking with 6 categories) as they are more informative ones.
 Selection of only CpGs whose methylation level is significantly dependent on one of or both of predictors (three models):
 For each model, the p-value fdr correction was performed (Stuff.R). Then, based on the results of regressions, selection of CpGs, whose methylation level was significantly dependent on the predictors, was performed according to the following criterias:
 P value of the overall model with fdr correction is less than 0.05
